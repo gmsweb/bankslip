@@ -1,0 +1,5 @@
+databaseChangeLog:
+  - preConditions:
+      dms: postgresql
+  - include:
+      file: db/changelog/scripts/0.0.1/db.changelog-01.sql

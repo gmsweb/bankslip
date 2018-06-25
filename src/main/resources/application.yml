@@ -1,0 +1,45 @@
+# Server's properties
+server:
+  port: ${PORT:8080}
+  tomcat:
+    encoding: UTF-8
+  compression:
+    enabled: true
+    min-response-size: 2048
+    mime-types: application/json,application/xml,text/html,text/xml,text/plain
+
+# Datasource's properties
+spring:
+  profile: local
+  output:
+    ansi:
+      enabled: ALWAYS
+  datasource:
+    continue-on-error: false
+    jmx-enabled: false
+    platform: postgres
+    password: 'admin'
+    username: 'postgres'
+    url: 'jdbc:postgresql://database:5432/postgres'
+  data:
+    jpa:
+      repositories:
+        enabled: true
+      database-platform: postgres
+      show-sql: true
+  jta:
+    enabled: true
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.yaml
+    check-change-log-location: true
+    drop-first: false
+    user: 'postgres'
+    password: 'admin'
+    url: 'jdbc:postgresql://database:5432/postgres'
